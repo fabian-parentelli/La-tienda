@@ -1,0 +1,37 @@
+@import './colors.css';
+
+.btn {
+    min-width: 105px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btnTop {
+    display: block;
+    margin: 1rem auto 0;
+}
+
+/* Button A */
+
+.btnA {
+    background-color: var(--colorA);
+    color: var(--colorC);
+    transition: .3s ease-in-out;
+}
+
+.btnA:hover {
+    background-color: var(--colorB);
+}
+
+.btnB {
+    background-color: var(--colorB);
+    color: var(--colorC);
+    transition: .3s ease-in-out;
+}
+
+.btnB:hover {
+    background-color: var(--colorBB);
+}

@@ -1,0 +1,15 @@
+.dsAdmin {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dsAdmin .dsAdminDayHour {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.dsAdmin button {
+    max-width: 120px;
+}
