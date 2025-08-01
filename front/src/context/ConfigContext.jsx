@@ -10,22 +10,22 @@ const ConfigProvider = ({ children }) => {
 
     const { showAlert, setLoading } = useAlertContext();
 
-    const [config, setConfig] = useState({ days: [], businessDay: false });
+    const [config, setConfig] = useState({});
 
-    const update = async () => {
-        setLoading(true);
-        const response = await postConfigApi(config);
+    const update = async (value, loading = false) => {
+        if (loading) setLoading(true);
+        const response = await postConfigApi(value);
         if (response.status === 'success') {
             setConfig(response.result);
             showAlert('Configuración exitosa');
         } else showAlert(response.error, 'error');
-        setLoading(false);
+        if (loading) setLoading(false)
     };
 
     const getConfigPage = async () => {
         const response = await getConfigPageApi();
-        if(response.status === 'success') setConfig(response.result);
-    }; 
+        if (response.status === 'success') setConfig(response.result);
+    };
 
     return (
         <ConfigContext.Provider value={{ config, setConfig, update, getConfigPage }}>

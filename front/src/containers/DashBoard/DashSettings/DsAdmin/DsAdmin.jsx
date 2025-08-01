@@ -1,23 +1,18 @@
-import './dsAdmin.css';
-import DsaDaysWork from './DsaDaysWork/DsaDaysWork';
-import DsaHourWork from './DsaHoursWork/DsaHourWork';
-import { useConfigContext } from '../../../../context/ConfigContext';
+import { useState } from 'react';
+import DsAdminFilters from './DsAdminFilters/DsAdminFilters';
 
 const DsAdmin = () => {
 
-    const { config, update } = useConfigContext();
+    const [vew, setVew] = useState(null);
 
     return (
-        <div className='dsAdmin'>
-
-            <section className='dsAdminDayHour'>
-                <DsaDaysWork />
-                <DsaHourWork />
+        <div className='column'>
+            <section className='btns'>
+                <button className='btn btnA' onClick={()=> setVew('fil')} style={{color: vew === 'fil' ? '#F4B942' : ''}}>Filtros</button>
+                <button className='btn btnA' onClick={()=> setVew('oth')} style={{color: vew === 'oth' ? '#F4B942' : ''}}>Otro</button>
             </section>
-            
-            <button className='btn btnA' onClick={update}>
-                {config?._id ? 'Actulaizar' : 'Crear'}
-            </button>
+
+            {vew === 'fil' && <DsAdminFilters />}
         </div>
     );
 };

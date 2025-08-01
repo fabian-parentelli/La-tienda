@@ -5,6 +5,6 @@ import { passportEnum } from '../config/enums.config.js';
 export default class ConfigRouter extends Router {
     init() {
         this.get('/', ['PUBLIC'], passportEnum.NOTHING, configController.getConfigPage);
-        this.put('/', ['ADMIN', 'MASTER'], passportEnum.JWT, configController.postConfig);
+        this.put('/', ['MASTER'], passportEnum.JWT, configController.postConfig);
     };
 };

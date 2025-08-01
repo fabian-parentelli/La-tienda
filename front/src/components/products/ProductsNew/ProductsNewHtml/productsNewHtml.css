@@ -2,6 +2,10 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    box-shadow: 0px 0px 5px gray;
+    padding: 1rem;
+    max-width: 805px;
+    border-radius: 8px;
 }
 
 .productsNew section label {

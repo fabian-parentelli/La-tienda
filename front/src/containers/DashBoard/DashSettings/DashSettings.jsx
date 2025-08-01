@@ -7,7 +7,7 @@ const DashSettings = ({ user }) => {
         <div className='column'>
             <TitleDash icon='setting' title='Opciones' help={user.role === 'admin' ? 'settingad' : 'settingus'} />
 
-            {(user.role === 'admin' || user.role === 'master') && <DsAdmin />}
+            {user.role === 'master' && <DsAdmin />}
             {user.role === 'user' && <p>Usuario</p>}
         </div>
     );

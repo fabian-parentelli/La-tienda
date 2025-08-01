@@ -1,7 +1,7 @@
 import './switch.css';
 import { useState } from 'react';
 
-const Switch = ({ values, setValues, pre = false, name = 'swicth', activeColor = '#1976d2', setChange,
+const Switch = ({ values, setValues, pre = false, name = 'swicth', activeColor = '#2C5469', setChange,
     label = '', statusFalse = 'NO', statusTrue = 'SI' }) => {
 
     const [active, setActive] = useState((values?.[name]) ?? pre);

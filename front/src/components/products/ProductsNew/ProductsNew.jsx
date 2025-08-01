@@ -1,97 +1,59 @@
-import './productsNew.css';
 import { useState } from 'react';
-import Icons from '../../Icons/Icons';
-import Tooltip from '../../tools/Tooltip/Tooltip';
+import Modal from '../../tools/Modal/Modal';
+import { useAlertContext } from '../../../context/AlertContext';
+import ProductsNewHtml from './ProductsNewHtml/ProductsNewHtml';
+import ProdNewSubCat from './modals/ProdNewSubCat/ProdNewSubCat';
+import ProdNewBrands from './modals/ProdNewBrands/ProdNewBrands';
+import ProdNewFamilies from './modals/ProdNewFamilies/ProdNewFamilies';
+import ProdNewCategories from './modals/ProdNewCategories/ProdNewCategories';
+import { postProductApi } from '../../../helpers/product/postProduct.api.js';
 
 const ProductsNew = () => {
 
+    const { showAlert, setLoading } = useAlertContext();
+
+    const [key, setKey] = useState(Date.now());
     const [values, setValues] = useState(null);
     const [formdata, setFormdata] = useState(new FormData());
+    const [modal, setModal] = useState({ open: false, data: null, type: null });
 
     const handleChange = (e) => setValues({ ...values, [e.target.name]: e.target.value });
+    const handleFileChange = (data) => setFormdata(data);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        Object.entries(values).forEach(([key, value]) => formdata.append(key, value));
+        const response = await postProductApi(formdata);
+        if (response.status === 'success') {
+            setFormdata(new FormData());
+            setKey(Date.now());
+            setValues(null);
+            showAlert('Producto creado correctamenete');
+        } else showAlert(response.error, 'error');
+        setLoading(false);
+    };
 
     return (
-        <form className='productsNew'>
+        <div>
+            <ProductsNewHtml
+                values={values}
+                setValues={setValues}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                setModal={setModal}
+                handleFileChange={handleFileChange}
+                key={key}
+            />
 
-            <section className='column'>
-                <label>
-                    Nombre
-                    <input
-                        type="text" name='name' value={values?.name || ''} onChange={handleChange}
-                        placeholder='Nombre del producto' required
-                    />
-                </label>
-
-                <label>
-                    Unidades por bulto
-                    <input
-                        type="text" name='box' value={values?.box || ''} onChange={handleChange}
-                        required placeholder='0'
-                    />
-                </label>
-
-                <label>
-                    Precio
-                    <input
-                        type="text" name='price' value={values?.price || ''} onChange={handleChange}
-                        required placeholder='0'
-                    />
-                </label>
-
-                <div className='productsNewPreMod'>
-                    <label>
-                        Categoría
-                        <select name="category" value={values?.category || ''} onChange={handleChange} required>
-
-                        </select>
-                    </label>
-                </div>
-
-            </section>
-
-            <section className='column'>
-                <label>
-                    Descripción
-                    <input
-                        type="text" name='description' value={values?.description || ''} onChange={handleChange}
-                        placeholder='Espesificación adicional' required
-                    />
-                </label>
-
-                <label>
-                    Unidad de medida
-                    <select name="unit" value={values?.unit || ''} onChange={handleChange} required>
-                        <option value="" hidden>Unidad de medida</option>
-                        <option value="unit">Un</option>
-                        <option value="liter">Li</option>
-                        <option value="gram">Gr</option>
-                        <option value="kilo">Ki</option>
-                    </select>
-                </label>
-
-                <label>
-                    Stock
-                    <input
-                        type="text" name='stock' value={values?.stock || ''} onChange={handleChange}
-                        placeholder='Stock, no obligatorio'
-                    />
-                </label>
-
-                <div className='productsNewPreMod'>
-                    <label>
-                        Sub-categoría
-                        <select name="subCategory" value={values?.subCategory || ''} onChange={handleChange} required>
-
-                        </select>
-                    </label>
-                    <Tooltip text='Agregar' backgroundColor='#2C5469'>
-                        <Icons type='event' hover={true} color='#2C5469' />
-                    </Tooltip>
-                </div>
-            </section>
-
-        </form>
-    );
+            <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })} btn={false}>
+                {modal.type === 'brands' && <ProdNewBrands setModal={setModal} setValues={setValues} />}
+                {modal.type === 'categories' && <ProdNewCategories setModal={setModal} setValues={setValues} />}
+                {modal.type === 'subCategories' && <ProdNewSubCat setModal={setModal} setValues={setValues} />}
+                {modal.type === 'family' && <ProdNewFamilies setModal={setModal} setValues={setValues} />}
+            </Modal>
+        </div>
+    )
 };
 
 export default ProductsNew;

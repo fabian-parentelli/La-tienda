@@ -4,19 +4,10 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 const configCollection = 'configs';
 
 const configSchema = new mongoose.Schema({
-    role: { type: String },
-    userId: { type: String },
-    days: [
-        {
-            day: { type: String },
-            cut: { type: Boolean, default: false },
-            hin: { type: String },
-            hout: { type: String },
-            hCutIn: { type: String },
-            hCutOut: { type: String },
-        }
-    ],
-    businessDay: { type: Boolean, default: false }
+    brands: [{ type: String }],
+    categories: [{ type: String }],
+    subCategories: [{ type: String }],
+    families: [{ type: String }],
 });
 
 configSchema.plugin(mongoosePaginate);

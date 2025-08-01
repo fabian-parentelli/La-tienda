@@ -13,7 +13,7 @@ const getConfigPage = async (req, res) => {
 
 const postConfig = async (req, res) => {
     try {
-        const result = await configService.postConfig({ ...req.body }, { ...req.user });
+        const result = await configService.postConfig({ ...req.body });
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof ConfigNotFound) return res.sendClientError(error.message);

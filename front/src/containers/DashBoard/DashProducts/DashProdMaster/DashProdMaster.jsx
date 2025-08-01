@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductsNew from "../../../../components/products/ProductsNew/ProductsNew";
+import ProductForDash from "../../../../components/products/ProductForDash/ProductForDash";
 
 const DashProdMaster = () => {
 
@@ -16,7 +17,7 @@ const DashProdMaster = () => {
 
             {!vew && <p>Gráficas</p>}
             {vew === 'new' && <ProductsNew />}
-            {vew === 'vew' && <p>Tabla de productos</p>}
+            {vew === 'vew' && <ProductForDash />}
         </div>
     );
 };
