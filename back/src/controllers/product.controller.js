@@ -12,4 +12,35 @@ const postProduct = async (req, res) => {
     };
 };
 
-export { postProduct }
+const getProducts = async (req, res) => {
+    try {
+        const result = await productService.getProducts({ ...req.query });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ProductNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
+const putProductImg = async (req, res) => {
+    const imagesUrl = req.cloudinaryUrls;
+    try {
+        const result = await productService.putProductImg({ ...req.body }, imagesUrl);
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ProductNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
+const putProduct = async (req, res) => {
+    try {
+        const result = await productService.putProduct({ ...req.body });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ProductNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
+export { postProduct, getProducts, putProductImg, putProduct };

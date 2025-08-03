@@ -43,7 +43,7 @@ const ProductsNew = () => {
                 handleSubmit={handleSubmit}
                 setModal={setModal}
                 handleFileChange={handleFileChange}
-                key={key}
+                resetKey={key}
             />
 
             <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })} btn={false}>

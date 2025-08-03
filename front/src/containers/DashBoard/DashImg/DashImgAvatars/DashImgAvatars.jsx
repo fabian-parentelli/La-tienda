@@ -15,8 +15,6 @@ const DashImgAvatars = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await getAvtarsApi({});
-            console.log(response);
-
             if (response.status === 'success') setAvatars(response.result);
             else showAlert(response.error, 'error');
         }; fetchData();

@@ -16,9 +16,7 @@ const DpAvatars = ({ user, handleChange, setModal }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getAvtarsApi(query);
-            console.log(response);
-            
+            const response = await getAvtarsApi(query);            
             if (response.status === 'success') setAvatars(response.result);
             else showAlert(response.error, 'error');
         }; fetchData();

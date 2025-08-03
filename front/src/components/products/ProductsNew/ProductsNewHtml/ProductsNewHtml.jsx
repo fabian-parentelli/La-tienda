@@ -5,7 +5,7 @@ import Tooltip from '../../../tools/Tooltip/Tooltip';
 import CloudFile from '../../../utils/CloudFile/CloudFile';
 import { useConfigContext } from '../../../../context/ConfigContext';
 
-const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setModal, handleFileChange, key }) => {
+const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setModal, handleFileChange, resetKey }) => {
 
     const { config } = useConfigContext();
 
@@ -150,7 +150,7 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
             </section>
 
             <section className='column'>
-                <CloudFile onChange={handleFileChange} folderName='products' contClass='cfRect' key={key} />
+                <CloudFile onChange={handleFileChange} folderName='products' contClass='cfRect' key={resetKey} />
 
                 <input
                     type="text" name='img' value={values?.img || ''} onChange={handleChange}

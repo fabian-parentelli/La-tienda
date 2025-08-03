@@ -12,7 +12,7 @@ const Modal = ({ children, open = false, onClose, btn = true, btnName = 'Cerrar'
         <div className='modal' onClick={handleOutsideClick}>
             <section className='modalSect' onClick={(e) => e.stopPropagation()}>
                 {children}
-                {btn && <button className='btn btnA btnTop' onClick={() => onClose()}>{btnName}</button>}
+                {btn && <button className='btn btnA btnTop' style={{ marginTop: '1rem' }} onClick={() => onClose()}>{btnName}</button>}
             </section>
         </div>
     );
