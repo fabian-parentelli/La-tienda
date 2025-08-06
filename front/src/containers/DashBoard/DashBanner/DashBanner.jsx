@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DashBannerNew from "./DashBannerNew/DashBannerNew";
+import DashBannerVew from "./DashBannerVew/DashBannerVew";
 import TitleDash from "../../../components/utils/TitleDash/TitleDash";
 
 const DashBanner = () => {
@@ -16,6 +17,7 @@ const DashBanner = () => {
             </section>
 
             {vew === 'new' && <DashBannerNew />}
+            {vew === 'vew' && <DashBannerVew />}
         </div>
     );
 };

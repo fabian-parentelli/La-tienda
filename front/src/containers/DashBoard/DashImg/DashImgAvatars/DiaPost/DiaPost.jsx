@@ -14,7 +14,7 @@ const DiaPost = ({ avatars, setAvatars }) => {
 
     const handleFileChange = (data) => setFormdata(data);
 
-        const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         name && formdata.set('name', name);
@@ -38,7 +38,7 @@ const DiaPost = ({ avatars, setAvatars }) => {
                 key={key} onChange={handleFileChange} folderName='avatars'
                 contClass='cfCircle'
             />
-            
+
             <div className='dasNewAvatarDiv'>
                 <h3>Nuevo avatar</h3>
 

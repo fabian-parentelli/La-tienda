@@ -53,7 +53,7 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae, handleOtherUpdate 
                             <td className="pcolorA">{prod.brand}</td>
                             <td className="pcolorA">{prod.description}</td>
                             <td>{prod.price}</td>
-                            <td>{prod.quantity}</td>
+                            <td>{prod?.quantity || 0}</td>
                             <td>{prod.discount}</td>
                             <td>{prod.box}</td>
                             <td className="pcolorA">{prod.unit}</td>

@@ -1,6 +1,6 @@
-import { deleteImg, getPublicId } from '../config/cloudinary.config.js';
 import { productRepository } from '../repositories/index.repositories.js';
 import { ProductNotFound } from '../utils/custom-exceptions.utils.js';
+import { deleteImg, getPublicId } from '../config/cloudinary.config.js';
 
 const postProduct = async (body, imagesUrl) => {
     if (imagesUrl && imagesUrl.length > 0) body.img = imagesUrl[0];

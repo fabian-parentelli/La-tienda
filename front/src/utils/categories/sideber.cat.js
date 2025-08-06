@@ -14,7 +14,7 @@ const navMaster = [
     { icon: 'user', name: "Usuarios", link: 'users' },
     { icon: 'dashboard', name: "Panel", link: '/' },
     { icon: 'carrot', name: "Productos", link: 'products' },
-    { icon: 'publicity', name: "Banners", link: 'ban' },
+    { icon: 'publicity', name: "Publicidad", link: 'ban' },
     { icon: 'image', name: "Imágenes", link: 'img' },
     { icon: 'setting', name: "Opciones", link: 'setting' },
 ];
