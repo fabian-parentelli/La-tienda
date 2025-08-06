@@ -84,6 +84,14 @@ const ProdTabModUpd = ({ product, setModal, handleUpdtae }) => {
                             ))}
                         </select>
                     </label>
+
+                    <label>
+                        Costo
+                        <input
+                            type="text" name='cost' value={values?.cost || ''} onChange={handleChange}
+                            required placeholder='0'
+                        />
+                    </label>
                 </div>
 
                 <div className='prodTabModUpdSectDiv'>
@@ -133,6 +141,15 @@ const ProdTabModUpd = ({ product, setModal, handleUpdtae }) => {
                     </label>
 
                     <Switch label='Stock' name='stock' values={values} setValues={setValues} />
+
+                    <label style={{ marginTop: '7px' }}>
+                        Ubicación
+                        <select name="location" value={values?.location || ''} onChange={handleChange} required>
+                            <option value="none">Ninguna</option>
+                            <option value="opportunity">Oportunidad</option>
+                            <option value="launch">Lanzamiento</option>
+                        </select>
+                    </label>
                 </div>
             </section>
 

@@ -14,7 +14,7 @@
     height: 30px;
     border: none;
     border-radius: 6px;
-    background-color: var(--colorA);
+    background-color: var(--colorBB);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,23 +24,23 @@
 
 .paginatorNextPage {
     color: var(--colorC);
-    
     width: 30px;
     height: 30px;
     border: none;
     border-radius: 6px;
-    background-color: var(--colorB);
+    background-color: var(--colorA);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: .3s ease-in-out;
-    box-shadow: 5px 5px 15px black;
+    box-shadow: 0px 0px 5px gray;
 }
 
 .paginatorNextPage:hover {
-    background-color: var(--colorG);
+    background-color: var(--colorB);
 }
+
 .paginatorNextPage:active {
     box-shadow: none;
 }

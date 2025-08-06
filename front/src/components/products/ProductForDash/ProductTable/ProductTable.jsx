@@ -2,12 +2,12 @@ import { useState } from "react";
 import Icons from "../../../Icons/Icons";
 import Copy from "../../../tools/Copy/Copy";
 import Modal from "../../../tools/Modal/Modal";
+import ProdTabModImg from "./modals/ProdTabModImg";
 import Tooltip from "../../../tools/Tooltip/Tooltip";
 import ImgHover from "../../../tools/ImgHover/ImgHover";
-import ProdTabModImg from "./modals/ProdTabModImg";
 import ProdTabModUpd from "./modals/ProdTabModUpd/ProdTabModUpd";
 
-const ProductTable = ({ products, handleUpdImg, handleUpdtae }) => {
+const ProductTable = ({ products, handleUpdImg, handleUpdtae, handleOtherUpdate }) => {
 
     const [modal, setModal] = useState({ open: false, data: null, type: null });
 
@@ -80,7 +80,7 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae }) => {
 
                             <td
                                 className="tdBack"
-                                onClick={() => handleUpdtae({ ...prod, stock: !prod.stock })}
+                                onClick={() => handleOtherUpdate({ ...prod, stock: !prod.stock })}
                             >
                                 <Tooltip text={prod.stock ? 'Desactivar' : 'Activar'} backgroundColor="#2C5469" position="left">
                                     <Icons type={prod.stock ? 'success' : 'error'} color={prod.stock ? '#2C5469' : '#fa5d44'} size="25px" />
@@ -89,7 +89,7 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae }) => {
 
                             <td
                                 className="tdBack"
-                                onClick={() => handleUpdtae({ ...prod, active: !prod.active })}
+                                onClick={() => handleOtherUpdate({ ...prod, active: !prod.active })}
                             >
                                 <Tooltip text={prod.active ? 'Desactivar' : 'Activar'} backgroundColor="#2C5469" position="left">
                                     <Icons type={prod.active ? 'success' : 'error'} color={prod.active ? '#2C5469' : '#fa5d44'} size="25px" />

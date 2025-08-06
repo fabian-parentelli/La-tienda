@@ -18,6 +18,8 @@ const productSchema = new mongoose.Schema({
     family: { type: String },
     stock: { type: Boolean, default: false },
     active: { type: Boolean, default: true },
+    cost: { type: Number },
+    location: { type: String },
 });
 
 productSchema.plugin(mongoosePaginate);

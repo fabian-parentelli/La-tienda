@@ -81,6 +81,14 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     </Tooltip>
                 </div>
 
+                <label>
+                    Costo
+                    <input
+                        type="text" name='cost' value={values?.cost || ''} onChange={handleChange}
+                        required placeholder='0'
+                    />
+                </label>
+
             </section>
 
             <section className='column'>
@@ -147,6 +155,16 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                 </div>
 
                 <Switch label='Stock' name='stock' values={values} setValues={setValues} />
+
+                <label style={{marginTop: '7px'}}>
+                    Ubicación
+                    <select name="location" value={values?.location || ''} onChange={handleChange} required>                    
+                        <option value="none">Ninguna</option>
+                        <option value="opportunity">Oportunidad</option>
+                        <option value="launch">Lanzamiento</option>
+                    </select>
+                </label>
+
             </section>
 
             <section className='column'>

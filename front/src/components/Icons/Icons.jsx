@@ -83,7 +83,7 @@ import ArrowRightIcon from './Paths/ArrowRightIcon';
 import ArrowLeftIcon from './Paths/ArrowLeftIcon';
 import IcoIcons from './Paths/IcoIcons';
 
-const Icons = ({ color = '#000', size = '30px', onClick, backCol = 'none', bold = 2, type = 'app', hover = false }) => {
+const Icons = ({ color = '#2C5469', size = '30px', onClick, backCol = 'none', bold = 2, type = 'app', hover = false }) => {
 
     return (
         <svg

@@ -79,14 +79,13 @@ export const AutoComplete = ({ options = [], labelKey = 'label', setData, style 
     };
 
     useEffect(() => {
-        if (options.length > 0 && selectedId) {
-            const selected = options.find(opt => opt._id === selectedId);
-            if (selected) {
-                setInputValue(selected[labelKey]);
-                if (setData) setData(selected);
-            }
-        }
-    }, [options, selectedId]);
+        if (!selectedId) {
+            setInputValue('');
+            return;
+        };
+        const selected = options.find(opt => opt._id === selectedId);
+        if (selected) setInputValue(selected[labelKey]);
+    }, [selectedId, options]);
 
     return (
         <div className="autocomplete" style={{ maxWidth: style.width || '280px' }}>

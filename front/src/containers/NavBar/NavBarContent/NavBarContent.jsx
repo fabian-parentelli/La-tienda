@@ -20,7 +20,7 @@ const NavBarContent = () => {
 
             <Link to={'/'} className='navBarContentA'>
                 <img src='/logo.png' alt="img" />
-                <h1>La Tienda</h1>
+                <h1>Punto Mercado</h1>
             </Link>
 
             <section>

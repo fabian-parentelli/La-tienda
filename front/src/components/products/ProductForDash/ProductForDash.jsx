@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Pager from '../../tools/Pager/Pager';
 import ProductTable from './ProductTable/ProductTable.jsx';
+import ProductFilter from '../ProductFilter/ProductFilter.jsx';
 import { useAlertContext } from '../../../context/AlertContext';
 import { putProductApi } from '../../../helpers/product/putProduct.api.js';
 import { getProductsApi } from '../../../helpers/product/getProducts.api.js';
@@ -39,6 +40,25 @@ const ProductForDash = () => {
         const response = await putProductApi(values);
         if (response.status === 'success') {
             const data = { ...products };
+            if (values.family) {
+                data.docs = data.docs.map(prod => {
+                    const updated = response.result.find(res => res._id === prod._id);
+                    return updated ? updated : prod;
+                });
+            } else {
+                const index = data.docs.findIndex(doc => doc._id === response.result._id);
+                data.docs[index] = response.result;
+            };
+            setProducts(data);
+            showAlert('Producto modificado correctamente');
+            return true;
+        } else showAlert(response.error, 'error');
+    };
+
+    const handleOtherUpdate = async (values) => {
+        const response = await putProductApi(values);
+        if (response.status === 'success') {
+            const data = { ...products };
             const index = data.docs.findIndex(doc => doc._id === response.result._id);
             data.docs[index] = response.result;
             setProducts(data);
@@ -49,12 +69,13 @@ const ProductForDash = () => {
 
     return (
         <div className='column'>
-            <p>FIlter</p>
+            <ProductFilter query={query} setQuery={setQuery} />
             {products &&
                 <ProductTable
                     products={products.docs}
                     handleUpdImg={handleUpdImg}
                     handleUpdtae={handleUpdtae}
+                    handleOtherUpdate={handleOtherUpdate}
                 />
             }
             <Pager docs={products} setQuery={setQuery} />

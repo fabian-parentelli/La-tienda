@@ -1,0 +1,18 @@
+.dashBannerNew {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashBannerNew .dashBannerNewSect {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashBannerNew .dashBannerNewSect label {
+    color: gray;
+    font-size: 12px;
+    max-width: 220px;
+}

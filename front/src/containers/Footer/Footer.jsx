@@ -10,7 +10,7 @@ const Footer = () => {
 
             <Link to={'/'} className='footerA'>
                 <img src="/logo.png" width={'50px'} alt="carrot" />
-                <p>La Tienda</p>
+                <p>Punto Mercado</p>
             </Link>
 
             <section className='footerTop'>
@@ -26,7 +26,7 @@ const Footer = () => {
                     <Link to={'/'}>
                         <img src='/logo.png' width={'50px'} alt="logo" />
                     </Link>
-                    <p className='footerBottomCata'>La Tienda</p>
+                    <p className='footerBottomCata'>Punto Mercado</p>
                     <FooterSocial />
                 </div>
 

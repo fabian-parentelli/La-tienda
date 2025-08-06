@@ -14,8 +14,12 @@ export default class Product {
         return await productModel.findById(id).lean();
     };
 
+    getAllProducts = async (query, gets = {}) => {
+        return await productModel.find(query, gets).lean();
+    };
+
     update = async (product) => {
         return await productModel.findByIdAndUpdate(product._id, product, { lean: true, new: true });
     };
-    
+
 };

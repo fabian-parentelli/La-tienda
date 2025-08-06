@@ -7,9 +7,11 @@ import ProdNewBrands from './modals/ProdNewBrands/ProdNewBrands';
 import ProdNewFamilies from './modals/ProdNewFamilies/ProdNewFamilies';
 import ProdNewCategories from './modals/ProdNewCategories/ProdNewCategories';
 import { postProductApi } from '../../../helpers/product/postProduct.api.js';
+import { useConfigContext } from '../../../context/ConfigContext.jsx';
 
 const ProductsNew = () => {
 
+    const { getConfigPage } = useConfigContext();
     const { showAlert, setLoading } = useAlertContext();
 
     const [key, setKey] = useState(Date.now());
@@ -30,6 +32,7 @@ const ProductsNew = () => {
             setKey(Date.now());
             setValues(null);
             showAlert('Producto creado correctamenete');
+            await getConfigPage();
         } else showAlert(response.error, 'error');
         setLoading(false);
     };

@@ -1,7 +1,7 @@
 import './tooltip.css';
 import { useState } from 'react';
 
-const Tooltip = ({ text = 'tooltip', children, position = 'top', backgroundColor = '#333' }) => {
+const Tooltip = ({ text = 'tooltip', children, position = 'top', backgroundColor = '#2C5469' }) => {
 
     const [vew, setVew] = useState(false);
 

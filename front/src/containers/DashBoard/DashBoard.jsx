@@ -8,6 +8,7 @@ import { useLoginContext } from "../../context/LoginContext";
 import Sidebar from '../../components/utils/Sidebars/Sidebars';
 import { sideberRole } from '../../utils/categories/sideber.cat.js';
 import DashProducts from './DashProducts/Dashproducts.jsx';
+import DashBanner from './DashBanner/DashBanner.jsx';
 
 const DashBoard = () => {
 
@@ -30,6 +31,7 @@ const DashBoard = () => {
                 {vewPanel === 'products' && <DashProducts user={user.data} />}
                 {vewPanel === 'setting' && <DashSettings user={user.data} />}
                 {vewPanel === 'img' && <DashImg />}
+                {vewPanel === 'ban' && <DashBanner />}
             </section>
 
         </div>
