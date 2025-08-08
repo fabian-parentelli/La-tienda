@@ -13,7 +13,7 @@ const getPublicities = async ({ page = 1, id, type, active }) => {
     if (id) query._id = id;
     if (type) query.type = type;
     if (active !== undefined) query.active = active;
-    const result = await publicityRepository.getPublicities(query, page);
+    const result = await publicityRepository.getPublicities(query, page);  
     if (!result) throw new PublicityNotFound('Error, al traer las publicidades');
     return { status: 'success', result };
 };

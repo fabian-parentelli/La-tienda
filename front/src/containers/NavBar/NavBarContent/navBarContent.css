@@ -20,3 +20,41 @@
 .navBarContent .navBarContentA img {
     width: 40px;
 }
+
+.navBarContent .navBarContentA .navBarContentCel {
+    display: none;
+}
+
+.navBarContent .navBarContentA h1 span {
+    color: #ff230f;
+}
+
+.navBarContent .navBarContentSect {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+@media (max-width: 767px) {
+
+    .navBarContent {
+        padding: 0 3px 0 0;
+    }
+
+    .navBarContent .navBarContentA {
+        gap: 0;
+    }
+
+    .navBarContent .navBarContentSect {
+        gap: 3px;
+    }
+
+    .navBarContent .navBarContentA .navBarContentCel {
+        display: block;
+    }
+
+    .navBarContent .navBarContentA .navBarContentPc {
+        display: none;
+    }
+
+}

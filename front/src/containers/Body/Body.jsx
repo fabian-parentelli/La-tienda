@@ -1,10 +1,13 @@
 import './body.css';
+import BodyBanner from './BodyBanner/BodyBanner';
+import BodyNav from './BodyNav/BodyNav';
 
 const Body = () => {
 
     return (
         <div className='body'>
-            Body
+            <BodyNav />
+            <BodyBanner />
         </div>
     );
 };

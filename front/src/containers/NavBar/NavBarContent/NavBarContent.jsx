@@ -6,6 +6,7 @@ import Icons from '../../../components/Icons/Icons.jsx';
 import Tooltip from '../../../components/tools/Tooltip/Tooltip.jsx';
 import { useLoginContext } from '../../../context/LoginContext.jsx';
 import { useConfigContext } from '../../../context/ConfigContext.jsx';
+import NavBarContSearch from './NavBarContSearch/NavBarContSearch.jsx';
 
 const NavBarContent = () => {
 
@@ -20,10 +21,12 @@ const NavBarContent = () => {
 
             <Link to={'/'} className='navBarContentA'>
                 <img src='/logo.png' alt="img" />
-                <h1>Punto Mercado</h1>
+                <h1 className='navBarContentPc'>Punto <span>Mercado</span></h1>
+                <h1 className='navBarContentCel'>P<span>M</span></h1>
             </Link>
 
-            <section>
+            <section className='navBarContentSect'>
+                <NavBarContSearch />
 
                 {!user.logged
                     ? <div>

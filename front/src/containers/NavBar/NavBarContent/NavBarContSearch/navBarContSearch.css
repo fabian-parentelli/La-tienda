@@ -1,0 +1,10 @@
+.navBarContSearch {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    
+    .navBarContSearch .navBarContSearchIcons {
+        display: none;
+    }
+}
