@@ -35,3 +35,13 @@
 .btnB:hover {
     background-color: var(--colorBB);
 }
+
+.btnC {
+    background-color: var(--colorRR);
+    color: var(--colorC);
+    transition: .3s ease-in-out;
+}
+
+.btnC:hover {
+    background-color: #ff1702;
+}

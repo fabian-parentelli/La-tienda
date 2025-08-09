@@ -10,6 +10,7 @@ const getProductsApi = async (obj) => {
     if (obj.brand) urlData += `brand=${obj.brand}&`;
     if (obj.category) urlData += `category=${obj.category}&`;
     if (obj.subCategory) urlData += `subcategory=${obj.subCategory}&`;
+    if (obj.notId) urlData += `notid=${obj.notId}&`;
 
     if (obj.active !== undefined) urlData += `active=${obj.active}&`;
 

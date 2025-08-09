@@ -17,12 +17,13 @@ const ProductFilter = ({ query, setQuery }) => {
     const [showFilters, setShowFilters] = useState(false);
 
     useEffect(() => {
-        if (config) {
+        if (config && config.products) {
+            const cleanStr = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             setName(config.products.map(prod => {
                 return {
-                    label: `${prod.name} ${prod.brand} ${prod.description}`,
+                    label: cleanStr(`${prod.name} ${prod.brand} ${prod.description}`),
                     _id: prod._id
-                }
+                };
             }));
         };
     }, [config]);

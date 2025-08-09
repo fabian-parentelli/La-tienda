@@ -9,11 +9,12 @@ const postProduct = async (body, imagesUrl) => {
     return { status: 'success' };
 };
 
-const getProducts = async ({ page = 1, limit = 12, brand, id, category, subcategory, active }) => {
+const getProducts = async ({ page = 1, limit = 12, brand, id, category, subcategory, active, notid }) => {
     const query = {};
     const options = { page, limit };
 
     if (id) query._id = id;
+    if (notid) query._id = { $ne: notid };
     if (brand) query.brand = brand;
     if (category) query.category = category;
     if (subcategory) query.subCategory = subcategory;

@@ -41,8 +41,9 @@ const ProductForDash = () => {
         if (response.status === 'success') {
             const data = { ...products };
             if (values.family) {
+                const resultsArray = Array.isArray(response.result) ? response.result : [response.result];
                 data.docs = data.docs.map(prod => {
-                    const updated = response.result.find(res => res._id === prod._id);
+                    const updated = resultsArray.find(res => res._id === prod._id);
                     return updated ? updated : prod;
                 });
             } else {

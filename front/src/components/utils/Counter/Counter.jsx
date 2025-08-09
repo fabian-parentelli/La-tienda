@@ -32,7 +32,7 @@ const Counter = ({ preCounter, setPreCounter, box }) => {
 
             {box &&
                 <div className='counterCounter' onClick={() => handleBox()}>
-                    <Tooltip text={`Agregar ${box} unidades`}>
+                    <Tooltip text={`Caja ${box} unidades`}>
                         <Icons type='icon' hover={true} size='25px' />
                     </Tooltip>
                 </div>

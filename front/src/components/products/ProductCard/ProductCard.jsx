@@ -1,0 +1,21 @@
+import './productCard.css';
+import { Link } from 'react-router-dom';
+import FavoriteAd from '../../utils/FavoriteAd/FavoriteAd';
+
+const ProductCard = ({ product }) => {
+
+    return (
+        <div className='productCard'>
+            <FavoriteAd id={product._id} />
+            <Link className='productCardLink' to={`/product/${product._id}`}>
+                <img src={product.img} alt="prod" />
+                <h5>{product.name} {product.brand}</h5>
+                <p className='pgray'>{product.description}</p>
+                <p className='productCardPrice'>${product.price}</p>
+            </Link>
+            <button className='btn btnC'>Agregar</button>
+        </div>
+    );
+};
+
+export default ProductCard;

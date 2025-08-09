@@ -11,6 +11,7 @@ import NewPassword from "../containers/user/NewPassword/NewPassword.jsx";
 import DashBoard from "../containers/DashBoard/DashBoard.jsx";
 import Avatars from "../containers/layouts/Avatars/Avatars.jsx";
 import Product from "../containers/layouts/Product/Product.jsx";
+import ProdQuery from "../components/products/ProdQuery/ProdQuery.jsx";
 
 const WrapRoutes = () => {
 
@@ -31,6 +32,7 @@ const WrapRoutes = () => {
                     <Route path="/dashboard" element={<DashBoard />} />
                     <Route path="/avatars" element={<Avatars />} />
                     <Route path="/product/:id" element={<Product />} />
+                    <Route path="/prodquery/:type/:name" element={<ProdQuery />} />
                 </Routes>
 
                 <Footer />
