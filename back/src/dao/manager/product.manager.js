@@ -22,4 +22,13 @@ export default class Product {
         return await productModel.findByIdAndUpdate(product._id, product, { lean: true, new: true });
     };
 
+    getOpport = async (notid = []) => {
+        return await productModel.aggregate([
+            {
+                $match: { _id: { $nin: notid.map(id => new mongoose.Types.ObjectId(id)) }, active: true }
+            },
+            { $sample: { size: 12 } }
+        ]);
+    };
+
 };

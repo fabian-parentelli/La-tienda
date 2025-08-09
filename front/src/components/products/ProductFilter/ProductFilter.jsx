@@ -5,7 +5,7 @@ import Tooltip from '../../tools/Tooltip/Tooltip';
 import { useConfigContext } from '../../../context/ConfigContext';
 import { AutoComplete } from '../../tools/AutoComplete/AutoComplete';
 
-const ProductFilter = ({ query, setQuery }) => {
+const ProductFilter = ({ query, setQuery, setModal }) => {
 
     const { config } = useConfigContext();
 
@@ -39,7 +39,7 @@ const ProductFilter = ({ query, setQuery }) => {
         if (showFilters) setShowFilters(false);
     }, [id, brand, category, subCategory]);
 
-    const handleDelete = (e) => {
+    const handleDelete = () => {
         setQuery({});
         setId(null);
         setBrand(null);
@@ -84,15 +84,29 @@ const ProductFilter = ({ query, setQuery }) => {
 
                 <div style={{ height: '40px' }}>
                     <select name="active" value={query?.active || ''} onChange={(e) => setQuery({ ...query, active: e.target.value })}>
-                        <option value="">Estado activo</option>
-                        <option value="true">Activo</option>
-                        <option value="false">No Activo</option>
+                        <option value="">Activo</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <div style={{ height: '40px' }}>
+                    <select name="active" value={query?.active || ''} onChange={(e) => setQuery({ ...query, active: e.target.value })}>
+                        <option value="none">Locación</option>
+                        <option value="opportunity">Oportunidad</option>
+                        <option value="launch">Lanzamiento</option>
                     </select>
                 </div>
 
                 <div onClick={handleDelete}>
                     <Tooltip text='Limpiar filtro'>
                         <Icons type='delete' hover={true} />
+                    </Tooltip>
+                </div>
+
+                <div onClick={() => setModal(true)}>
+                    <Tooltip text='Generar oportunidades' position='left'>
+                        <Icons type='map' color='green' hover={true} />
                     </Tooltip>
                 </div>
 

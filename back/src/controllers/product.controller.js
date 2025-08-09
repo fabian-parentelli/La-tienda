@@ -33,6 +33,16 @@ const putProductImg = async (req, res) => {
     };
 };
 
+const putOpportinity = async (req, res) => {
+    try {
+        const result = await productService.putOpportinity({ ...req.body }, { ...req.user });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ProductNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
 const putProduct = async (req, res) => {
     try {
         const result = await productService.putProduct({ ...req.body });
@@ -43,4 +53,4 @@ const putProduct = async (req, res) => {
     };
 };
 
-export { postProduct, getProducts, putProductImg, putProduct };
+export { postProduct, getProducts, putProductImg, putOpportinity, putProduct };

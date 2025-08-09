@@ -21,13 +21,13 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae, handleOtherUpdate 
                         <th>Nombre</th>
                         <th>marca</th>
                         <th>descripción</th>
-                        <th>precio</th>
-                        <th>Stock</th>
-                        <th>sale</th>
-                        <th>box</th>
+                        <th>$</th>
+                        <th><Tooltip text="Stock">St</Tooltip></th>
+                        <th><Tooltip text="descuento">%</Tooltip></th>
                         <th>unid</th>
-                        <th>Categoría</th>
+                        <th>Categ</th>
                         <th>sub-cat</th>
+                        <th><Icons type="map" color="#ecf0f1" size="20px" bold={1.3} /></th>
                         <th><Icons type="chart" color="#ecf0f1" size="20px" bold={1.3} /></th>
                         <th>upd</th>
                         <th>Stock</th>
@@ -55,10 +55,21 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae, handleOtherUpdate 
                             <td>{prod.price}</td>
                             <td>{prod?.quantity || 0}</td>
                             <td>{prod.discount}</td>
-                            <td>{prod.box}</td>
                             <td className="pcolorA">{prod.unit}</td>
                             <td className="pcolorA">{prod.category}</td>
                             <td className="pcolorA">{prod.subCategory}</td>
+
+                            <td
+                                className="tdBack"
+                                onClick={() => setModal({ open: true, data: prod, type: 'gra' })}
+                            >
+                                <Tooltip text={locName[prod.location] || 'Libre'} backgroundColor="#2C5469" position="left">
+                                    <Icons type='map'
+                                        color={prod.location === 'opportunity' ? 'green' : prod.location === 'launch' ? 'red' : '#2C5469'}
+                                        size="25px"
+                                    />
+                                </Tooltip>
+                            </td>
 
                             <td
                                 className="tdBack"
@@ -110,3 +121,9 @@ const ProductTable = ({ products, handleUpdImg, handleUpdtae, handleOtherUpdate 
 };
 
 export default ProductTable;
+
+const locName = {
+    'none': 'Ninguna',
+    'opportunity': 'Oportunidad',
+    'launch': 'Lanzamiento'
+};

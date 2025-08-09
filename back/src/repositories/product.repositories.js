@@ -26,5 +26,10 @@ export default class ProductRepository {
         const result = await productManager.update(product);
         return result;
     };
+    
+    getOpport = async (notid) => {
+        const result = await productManager.getOpport(notid);
+        return result;
+    };
 
 };

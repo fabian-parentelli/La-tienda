@@ -45,3 +45,12 @@
 .btnC:hover {
     background-color: #ff1702;
 }
+
+.btnD {
+    background-color: var(--colorC);
+    transition: .3s ease-in-out;
+}
+
+.btnD:hover {
+    background-color: #8080803d;
+}

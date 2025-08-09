@@ -6,6 +6,9 @@ import { useAlertContext } from '../../../context/AlertContext';
 import { putProductApi } from '../../../helpers/product/putProduct.api.js';
 import { getProductsApi } from '../../../helpers/product/getProducts.api.js';
 import { putProductImgApi } from '../../../helpers/product/putProductImg.api.js';
+import { putProductOppApi } from '../../../helpers/product/putProductOpp.api.js';
+import Modal from '../../tools/Modal/Modal.jsx';
+import ProdOppMod from './ProductTable/modals/ProdOppMod/ProdOppMod.jsx';
 
 const ProductForDash = () => {
 
@@ -13,6 +16,7 @@ const ProductForDash = () => {
 
     const [query, setQuery] = useState({});
     const [products, setProducts] = useState(null);
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,9 +72,20 @@ const ProductForDash = () => {
         } else showAlert(response.error, 'error');
     };
 
+    const handleOpp = async (password) => {
+        const response = await putProductOppApi(password);
+        if (response.status === 'success') {
+            const data = { ...products };
+            data.docs = response.result;
+            setProducts(data);
+            showAlert('Oportunidades generadas');
+            return true;
+        } else showAlert(response.error, 'error');
+    };
+
     return (
         <div className='column'>
-            <ProductFilter query={query} setQuery={setQuery} />
+            <ProductFilter query={query} setQuery={setQuery} setModal={setModal} />
             {products &&
                 <ProductTable
                     products={products.docs}
@@ -80,8 +95,19 @@ const ProductForDash = () => {
                 />
             }
             <Pager docs={products} setQuery={setQuery} />
+
+            <Modal open={modal} onClose={() => setModal(false)} btn={false}>
+                <ProdOppMod setModal={setModal} handleOpp={handleOpp} />
+            </Modal>
         </div>
     );
 };
 
 export default ProductForDash;
+
+// Hacer que se vean las oportunidades en el body 
+// Hacer que se vean las oportunidades en el body 
+// Hacer que se vean las oportunidades en el body 
+// Hacer que se vean las oportunidades en el body 
+// Hacer que se vean las oportunidades en el body 
+// Hacer que se vean las oportunidades en el body 

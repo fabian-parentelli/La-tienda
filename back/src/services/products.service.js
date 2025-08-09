@@ -1,6 +1,7 @@
 import { productRepository } from '../repositories/index.repositories.js';
 import { ProductNotFound } from '../utils/custom-exceptions.utils.js';
 import { deleteImg, getPublicId } from '../config/cloudinary.config.js';
+import { verifyRole } from '../utils/utilsServices/users.utils.js';
 
 const postProduct = async (body, imagesUrl) => {
     if (imagesUrl && imagesUrl.length > 0) body.img = imagesUrl[0];
@@ -35,6 +36,27 @@ const putProductImg = async (body, imagesUrl) => {
     return { status: 'success', result };
 };
 
+const putOpportinity = async ({ password }, { user }) => {
+    await verifyRole(password, user._id, ['master']);
+    const products = await productRepository.getAllProducts({ location: 'opportunity' });
+    if (!products) throw new ProductNotFound('Error al tarer las oportunidades');
+    const notid = [];
+    for (const product of products) {
+        product.location = 'none';
+        notid.push(product._id.toString());
+        await productRepository.update(product);
+    };
+    const result = [];
+    const productRandom = await productRepository.getOpport(notid);
+    if(!productRandom) throw new ProductNotFound('Error al tarer los productos random');
+    for (const prod of productRandom) {
+        prod.location = 'opportunity';
+        result.push(prod);
+        await productRepository.update(prod);
+    };
+    return { status: 'success', result };
+};
+
 const putProduct = async (body) => {
     const product = await productRepository.getById(body._id);
     if (!product) throw new ProductNotFound('Error al tarer el producto');
@@ -59,4 +81,4 @@ const putProduct = async (body) => {
     };
 };
 
-export { postProduct, getProducts, putProductImg, putProduct };
+export { postProduct, getProducts, putProductImg, putOpportinity, putProduct };
