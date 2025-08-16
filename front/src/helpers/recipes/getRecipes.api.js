@@ -5,6 +5,10 @@ const getRecipesApi = async (obj) => {
     let urlData = `${url}/api/reciper?`;
 
     if (obj.page) urlData += `page=${obj.page}&`;
+    if (obj.category) urlData += `category=${obj.category}&`;
+    if (obj.type) urlData += `type=${obj.type}&`;
+    if (obj.today) urlData += `today=${obj.today}&`;
+    if (obj.id) urlData += `id=${obj.id}&`;
     if (obj.active !== undefined) urlData += `active=${obj.active}&`;
 
     if (urlData.endsWith('&')) urlData = urlData.slice(0, -1);

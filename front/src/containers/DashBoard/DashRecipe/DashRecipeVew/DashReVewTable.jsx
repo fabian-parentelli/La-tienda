@@ -7,8 +7,10 @@ import DashRecVewUpd from "./modals/DashRecVewUpd";
 import DashRecVewDay from "./modals/DashRecVewDay";
 import DashRecVewPro from "./modals/DashRecVewPro";
 import DashRecVewIns from "./modals/DashRecVewIns";
+import DashRecVewImg from "./modals/DashRecVewImg";
+import DashRecVewCat from "./modals/DashRecVewCat";
 
-const DashReVewTable = ({ recipes, handleUpdate }) => {
+const DashReVewTable = ({ recipes, handleUpdate, handleUpdImg }) => {
 
     const [modal, setModal] = useState({ open: false, data: null, type: null });
 
@@ -20,6 +22,7 @@ const DashReVewTable = ({ recipes, handleUpdate }) => {
                         <th>img</th>
                         <th>Nombre</th>
                         <th>Upd</th>
+                        <th></th>
                         <th>dias</th>
                         <th></th>
                         <th></th>
@@ -32,7 +35,7 @@ const DashReVewTable = ({ recipes, handleUpdate }) => {
 
                             <td
                                 className="tdBack"
-                                onClick={() => console.log('imagen')}
+                                onClick={() => setModal({ open: true, data: rec, type: 'img' })}
                             >
                                 <ImgHover img={rec.img} border={false} />
                             </td>
@@ -45,6 +48,15 @@ const DashReVewTable = ({ recipes, handleUpdate }) => {
                             >
                                 <Tooltip text="Actualizar" position="left">
                                     <Icons type="arrows" />
+                                </Tooltip>
+                            </td>
+                            
+                            <td
+                                className="tdBack"
+                                onClick={() => setModal({ open: true, data: rec, type: 'cat' })}
+                            >
+                                <Tooltip text="Filtros" position="left">
+                                    <Icons type="clipboard" />
                                 </Tooltip>
                             </td>
 
@@ -89,7 +101,9 @@ const DashReVewTable = ({ recipes, handleUpdate }) => {
             </table>
 
             <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })} btn={false}>
+                {modal.type === 'img' && <DashRecVewImg recipe={modal.data} setModal={setModal} handleUpdImg={handleUpdImg} />}
                 {modal.type === 'update' && <DashRecVewUpd recipe={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}
+                {modal.type === 'cat' && <DashRecVewCat recipe={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}
                 {modal.type === 'days' && <DashRecVewDay recipe={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}
                 {modal.type === 'ingr' && <DashRecVewPro recipe={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}
                 {modal.type === 'inst' && <DashRecVewIns recipe={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}

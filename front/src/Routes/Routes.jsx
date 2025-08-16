@@ -16,6 +16,8 @@ import ProductSectPage from "../containers/layouts/products/ProductSectPage/Prod
 import Shipments from "../containers/layouts/Shipments/Shipments.jsx";
 import Bonus from "../containers/layouts/Bonus/Bonus.jsx";
 import ProductAll from "../containers/layouts/products/ProductAll/ProductAll.jsx";
+import RecipePage from "../containers/layouts/recipe/RecipePage/RecipePage.jsx";
+import RecippeAll from "../containers/layouts/recipe/RecipeAll/RecipeAll.jsx";
 
 const WrapRoutes = () => {
 
@@ -26,7 +28,7 @@ const WrapRoutes = () => {
             <ScrollToTop>
 
                 <NavBar />
-                
+
                 <Routes>
                     <Route path="/" element={<Body />} />
                     <Route path="/login" element={<Login />} />
@@ -41,6 +43,8 @@ const WrapRoutes = () => {
                     <Route path="/shipments" element={<Shipments />} />
                     <Route path="/bonus" element={<Bonus />} />
                     <Route path="/all" element={<ProductAll />} />
+                    <Route path="/recipe/:id" element={<RecipePage />} />
+                    <Route path="/recipes" element={<RecippeAll />} />
                 </Routes>
 
                 <Footer />

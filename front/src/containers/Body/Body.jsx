@@ -4,6 +4,7 @@ import BodyBanner from './BodyBanner/BodyBanner';
 import BodyCategories from './BodyCategories/BodyCategories';
 import ProdSections from '../../components/products/ProdSections/ProdSectuons';
 import BodyToProducts from './BodyToProducts/BodyToProducts';
+import BodyRecipe from './BodyRecipe/BodyRecipe';
 
 const Body = () => {
 
@@ -15,6 +16,7 @@ const Body = () => {
             <ProdSections time={500} />
             <BodyToProducts />
             <ProdSections type='launch' time={1000} />
+            <BodyRecipe  />
         </div>
     );
 };

@@ -4,6 +4,8 @@ import Pager from "../../../../components/tools/Pager/Pager.jsx";
 import { useAlertContext } from "../../../../context/AlertContext.jsx";
 import { putRecipeApi } from "../../../../helpers/recipes/putRecipe.api.js";
 import { getRecipesApi } from "../../../../helpers/recipes/getRecipes.api.js";
+import { putRecipeImgApi } from "../../../../helpers/recipes/putRecipeImg.api.js";
+import RecipeFilter from "../../../../components/recipes/RecipeFilter/RecipeFilter.jsx";
 
 const DashRecipeVew = () => {
 
@@ -14,7 +16,7 @@ const DashRecipeVew = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            if (!query?.category) setLoading(true);
             const response = await getRecipesApi(query);
             if (response.status === 'success') setRecipes(response.result);
             else showAlert(response.error, 'error');
@@ -35,13 +37,25 @@ const DashRecipeVew = () => {
         if (load) setLoading(false);
     };
 
+    const handleUpdImg = async (values) => {
+        const response = await putRecipeImgApi(values);
+        if (response.status === 'success') {
+            const data = { ...recipes };
+            const index = data.docs.findIndex(doc => doc._id == response.result._id);
+            data.docs[index] = response.result;
+            setRecipes(data);
+            return true;
+        } else showAlert(response.error, 'error');
+    };
+
     return (
         <div className="column">
-            <p>Filtros -- trabajar</p>
+            <RecipeFilter query={query} setQuery={setQuery} active={false} />
             {recipes &&
                 <DashReVewTable
                     recipes={recipes.docs}
                     handleUpdate={handleUpdate}
+                    handleUpdImg={handleUpdImg}
                 />
             }
             <Pager docs={recipes} setQuery={setQuery} />
@@ -50,10 +64,3 @@ const DashRecipeVew = () => {
 };
 
 export default DashRecipeVew;
-
-// Trabajar filtros y actualizar la imagen.
-// Trabajar filtros y actualizar la imagen.
-// Trabajar filtros y actualizar la imagen.
-// Trabajar filtros y actualizar la imagen.
-// Trabajar filtros y actualizar la imagen.
-// Trabajar filtros y actualizar la imagen.

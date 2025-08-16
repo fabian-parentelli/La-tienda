@@ -21,6 +21,17 @@ const getRecipes = async (req, res) => {
     };
 };
 
+const putRecipesImg = async (req, res) => {
+    const imagesUrl = req.cloudinaryUrls;
+    try {
+        const result = await recipeService.putRecipesImg({ ...req.body }, imagesUrl);
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof RecipeNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
 const putRecipes = async (req, res) => {
     try {
         const result = await recipeService.putRecipes({ ...req.body });
@@ -31,4 +42,4 @@ const putRecipes = async (req, res) => {
     };
 };
 
-export { postRecipe, getRecipes, putRecipes };
+export { postRecipe, getRecipes, putRecipesImg, putRecipes };

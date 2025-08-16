@@ -10,12 +10,14 @@ const postProduct = async (body, imagesUrl) => {
     return { status: 'success' };
 };
 
-const getProducts = async ({ page = 1, limit = 12, brand, id, category, subcategory, active, 
-    notid, location }) => {
+const getProducts = async ({ page = 1, limit = 12, brand, id, category, subcategory, active,
+    notid, location, ids }) => {
+
     const query = {};
     const options = { page, limit };
 
     if (id) query._id = id;
+    if (ids) query._id = { $in: ids.split(',') };
     if (notid) query._id = { $ne: notid };
     if (brand) query.brand = brand;
     if (category) query.category = category;
@@ -44,7 +46,7 @@ const putOpportinity = async ({ password }, { user }) => {
     if (!products) throw new ProductNotFound('Error al tarer las oportunidades');
     const notid = [];
     for (const product of products) {
-        if(product.location === 'opportunity') {
+        if (product.location === 'opportunity') {
             product.location = 'none';
             notid.push(product._id.toString());
             await productRepository.update(product);
@@ -52,7 +54,7 @@ const putOpportinity = async ({ password }, { user }) => {
     };
     const result = [];
     const productRandom = await productRepository.getOpport(notid);
-    if(!productRandom) throw new ProductNotFound('Error al tarer los productos random');
+    if (!productRandom) throw new ProductNotFound('Error al tarer los productos random');
     for (const prod of productRandom) {
         prod.location = 'opportunity';
         result.push(prod);

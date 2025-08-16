@@ -21,6 +21,8 @@ const recipeSchema = new mongoose.Schema({
     ],
     instructions: [{ type: String }],
     notes: { type: String },
+    category: { type: String },
+    type: { type: String },
     active: { type: Boolean, default: true },
     days: [{ type: String }],
 });

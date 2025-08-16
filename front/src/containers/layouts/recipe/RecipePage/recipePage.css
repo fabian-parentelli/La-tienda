@@ -1,0 +1,37 @@
+.recipePage {
+    margin-top: 70px;
+    min-height: 80vh;
+}
+
+.recipePage .recipePagePc {
+    width: 100%;
+}
+
+.recipePage .recipePageCel {
+    width: 100%;
+    display: none;
+}
+
+.recipePage .recipePageImg {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.recipePage .recipePageImg img {
+    box-shadow: 0px 0px 5px ;
+    border-radius: 10px;
+    max-width: 390px;
+    width: 90%;
+}
+
+@media (max-width: 767px) {
+
+    .recipePage .recipePagePc {
+        display: none;
+    }
+
+    .recipePage .recipePageCel {
+        display: block;
+    }
+}
