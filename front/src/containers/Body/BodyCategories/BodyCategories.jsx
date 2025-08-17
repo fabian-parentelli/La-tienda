@@ -45,6 +45,7 @@ const categories = [
     { name: 'quesos', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753529/chees_jy0og1.png' },
     { name: 'embutidos', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753528/stiff_ffjqiw.png' },
     { name: 'dulces', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753528/sweet_rje169.png' },
+    { name: 'conservas', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1755428946/conservas_drr4oc.png' },
     { name: 'panaderia', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753528/bread_tmwt58.png' },
     { name: 'verduleria', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753527/fruts_gcpcaz.png' },
     { name: 'bebidas', icon: 'https://res.cloudinary.com/dc7dw9qg3/image/upload/v1754753331/drinks_udo3l9.png' },

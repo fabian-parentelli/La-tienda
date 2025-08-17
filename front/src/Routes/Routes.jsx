@@ -18,6 +18,8 @@ import Bonus from "../containers/layouts/Bonus/Bonus.jsx";
 import ProductAll from "../containers/layouts/products/ProductAll/ProductAll.jsx";
 import RecipePage from "../containers/layouts/recipe/RecipePage/RecipePage.jsx";
 import RecippeAll from "../containers/layouts/recipe/RecipeAll/RecipeAll.jsx";
+import Cart from "../containers/layouts/Cart/Cart.jsx";
+import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
 
 const WrapRoutes = () => {
 
@@ -45,8 +47,10 @@ const WrapRoutes = () => {
                     <Route path="/all" element={<ProductAll />} />
                     <Route path="/recipe/:id" element={<RecipePage />} />
                     <Route path="/recipes" element={<RecippeAll />} />
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
 
+                <BadgeBody />
                 <Footer />
 
             </ScrollToTop>

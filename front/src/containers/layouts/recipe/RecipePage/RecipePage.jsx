@@ -41,7 +41,7 @@ const RecipePage = () => {
             }
 
             <Link className='recipePageImg' to={'/recipes'}>
-                <img src="https://res.cloudinary.com/dc7dw9qg3/image/upload/v1755349869/cocinacel_owskmr.jpg" alt="" />
+                Ver más recetas
             </Link>
         </div>
     );

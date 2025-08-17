@@ -1,6 +1,7 @@
 import './productCard.css';
 import { Link } from 'react-router-dom';
 import FavoriteAd from '../../utils/FavoriteAd/FavoriteAd';
+import ProductCardBtn from './ProductCardBtn';
 
 const ProductCard = ({ product }) => {
     
@@ -24,7 +25,7 @@ const ProductCard = ({ product }) => {
                     <span>{product.location && product.location !== 'none' && product.price}</span>
                 </p>
             </Link>
-            <button className='btn btnC'>Agregar</button>
+            <ProductCardBtn product={product} />
         </div>
     );
 };
