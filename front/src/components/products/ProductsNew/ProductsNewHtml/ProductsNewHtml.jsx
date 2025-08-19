@@ -114,10 +114,12 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     Unidad de medida
                     <select name="unit" value={values?.unit || ''} onChange={handleChange} required>
                         <option value="" hidden>Unidad de medida</option>
-                        <option value="un">Un</option>
-                        <option value="li">Li</option>
-                        <option value="gr">Gr</option>
-                        <option value="ki">Ki</option>
+                        <option value="un">un</option>
+                        <option value="li">lt</option>
+                        <option value="gr">gr</option>
+                        <option value="ki">kg</option>
+                        <option value="ki">ml</option>
+                        <option value="ki">cc</option>
                     </select>
                 </label>
 

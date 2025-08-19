@@ -34,8 +34,10 @@ const isUserUtils = async (body) => {
             const result = await userRepository.update({ ...user, ...body });
             if (!result) throw new UserNotFound('Error, al actualizar el usuario');
             return { userId: body._id };
-        };
+        } else return { userId: body._id };
     } else {
+        const isTehereUser = await userRepository.getByEmail(body.email);
+        if (isTehereUser) throw new UserNotFound('Ya existe un usuario con ese email');
         body.password = createHash(body.password);
         const result = await userRepository.register(body);
         if (!result) throw new UserNotFound('Error, al crear el usuario');

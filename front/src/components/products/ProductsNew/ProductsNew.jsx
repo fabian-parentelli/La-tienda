@@ -4,10 +4,10 @@ import { useAlertContext } from '../../../context/AlertContext';
 import ProductsNewHtml from './ProductsNewHtml/ProductsNewHtml';
 import ProdNewSubCat from './modals/ProdNewSubCat/ProdNewSubCat';
 import ProdNewBrands from './modals/ProdNewBrands/ProdNewBrands';
+import { useConfigContext } from '../../../context/ConfigContext.jsx';
 import ProdNewFamilies from './modals/ProdNewFamilies/ProdNewFamilies';
 import ProdNewCategories from './modals/ProdNewCategories/ProdNewCategories';
 import { postProductApi } from '../../../helpers/product/postProduct.api.js';
-import { useConfigContext } from '../../../context/ConfigContext.jsx';
 
 const ProductsNew = () => {
 

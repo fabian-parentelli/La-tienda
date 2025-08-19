@@ -1,5 +1,6 @@
 import './cartOut.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartOutUser from './CartOutUser/CartOutUser.jsx';
 import { useCartContext } from '../../../../context/CartContext';
 import { useLoginContext } from '../../../../context/LoginContext.jsx';
@@ -10,8 +11,9 @@ import { postOrderApi } from '../../../../helpers/order/postOrder.api.js';
 
 const CartOut = ({ coupon }) => {
 
-    const { user } = useLoginContext();
+    const navigate = useNavigate();
     const { showAlert } = useAlertContext();
+    const { user, current } = useLoginContext();
     const { cart, totalCart, removeAll } = useCartContext();
 
     const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ const CartOut = ({ coupon }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setLoading(true);
+        setLoading(true);
         const { typePay, ...rest } = values;
         const query = {
             user: rest,
@@ -32,17 +34,11 @@ const CartOut = ({ coupon }) => {
         const response = await postOrderApi(query);
         if (response.status === 'success') {
             if (!response.isUser) {
-                console.log('No es usuario');
-                
-                console.log(response);
-                // localStorage.setItem('token', response.accesToken);
-                // localStorage.setItem('token', response.accesToken);
-                // localStorage.setItem('token', response.accesToken);
-                // localStorage.setItem('token', response.accesToken);
-            } else {
-                console.log('es usuario');
-                
-            }
+                localStorage.setItem('token', response.accesToken);
+                await current();
+            };
+            removeAll();
+            navigate(`/fallowup/${response.result._id}`);
         } else showAlert(response.error, 'error');
         setLoading(false);
     };

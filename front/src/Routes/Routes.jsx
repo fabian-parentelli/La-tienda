@@ -20,6 +20,7 @@ import RecipePage from "../containers/layouts/recipe/RecipePage/RecipePage.jsx";
 import RecippeAll from "../containers/layouts/recipe/RecipeAll/RecipeAll.jsx";
 import Cart from "../containers/layouts/Cart/Cart.jsx";
 import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
+import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
 
 const WrapRoutes = () => {
 
@@ -48,6 +49,7 @@ const WrapRoutes = () => {
                     <Route path="/recipe/:id" element={<RecipePage />} />
                     <Route path="/recipes" element={<RecippeAll />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/fallowup/:id" element={<FallowUp />} />
                 </Routes>
 
                 <BadgeBody />
