@@ -15,12 +15,10 @@ const ProductCardBtn = ({ product }) => {
             addToCart({
                 _id: product._id,
                 quantity: 1,
-                stock: product.stock ? product?.quantity : false,
                 price: product?.location && product?.location !== 'none'
                     ? Math.round(product.price - (product.price * product.discount / 100))
                     : product.price,
-                name: `${product.name} ${product.brand} ${product.description}`,
-                img: product.img
+                product
             });
             showAlert('Producto agragdo al carrito', 'info');
         };

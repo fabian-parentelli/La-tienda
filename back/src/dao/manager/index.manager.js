@@ -6,6 +6,7 @@ import Avatar from './avatar.manager.js';
 import Product from './product.manager.js';
 import Publicity from './publicity.manager.js';
 import Recipe from './recipe.manager.js';
+import Order from './order.manager.js';
 
 export const userManager = new User();
 export const activityManager = new Activity();
@@ -15,3 +16,4 @@ export const avatarManager = new Avatar();
 export const productManager = new Product();
 export const publicityManager = new Publicity();
 export const recipeManager = new Recipe();
+export const orderManager = new Order();
