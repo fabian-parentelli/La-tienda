@@ -6,7 +6,7 @@ const FallowUp = () => {
 
     return (
         <div className="fallowUp">
-            FallowUp
+            <h2>Estado de tu pedido</h2>
         </div>
     );
 };

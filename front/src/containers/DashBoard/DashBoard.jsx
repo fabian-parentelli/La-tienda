@@ -10,6 +10,7 @@ import { sideberRole } from '../../utils/categories/sideber.cat.js';
 import DashProducts from './DashProducts/Dashproducts.jsx';
 import DashBanner from './DashBanner/DashBanner.jsx';
 import DashRecipe from './DashRecipe/DashRecipe.jsx';
+import DashOrders from './DashOrders/DashOrders.jsx';
 
 const DashBoard = () => {
 
@@ -34,6 +35,7 @@ const DashBoard = () => {
                 {vewPanel === 'img' && <DashImg />}
                 {vewPanel === 'ban' && <DashBanner />}
                 {vewPanel === 'rec' && <DashRecipe />}
+                {vewPanel === 'order' && <DashOrders />}
             </section>
 
         </div>
